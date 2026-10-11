@@ -126,8 +126,8 @@
   },
   {
     "path": "requirements.txt",
-    "bytes": 144,
-    "sha256": "1aa3458edcefe45fb84a67d32dd7355ede1789a4b3296743b1434db6bded7558"
+    "bytes": 524,
+    "sha256": "adc98b44c8b199075e00db6a39c975a9025d6e5d8ab09f30def70cd9c98077e0"
   },
   {
     "path": "research/http-evaluation.json",
