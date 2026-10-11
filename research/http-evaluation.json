@@ -1,0 +1,215 @@
+{
+  "report": {
+    "created_at": "2026-10-11T07:39:43.684Z",
+    "version": "http-rf-8e78fe1a0dee",
+    "protocol": "supervised_feature_group_disjoint/70-15-15",
+    "threshold_source": "validation_only",
+    "seed": 41,
+    "production_eligible": false,
+    "scope": "loopback_lab_only",
+    "cohorts": {
+      "train": {
+        "rows": 7790,
+        "positive": 3667,
+        "membership_hash": "d4ab5af3adb9decbe2033498995d61ed2cea2470668ba5012b8b7ef92e7676b3"
+      },
+      "validation": {
+        "rows": 1746,
+        "positive": 836,
+        "membership_hash": "7246739926e38d32ead88bcc20789e1744a106f25d62f60a4a3a9ab99c805157"
+      },
+      "test": {
+        "rows": 1715,
+        "positive": 801,
+        "membership_hash": "6a6e0a9e5029bf23f30b1c604265465b1006f108f018bdee5b98f24656b9cc27"
+      }
+    },
+    "candidate": {
+      "support": 1715,
+      "tp": 482,
+      "fp": 20,
+      "tn": 894,
+      "fn": 319,
+      "precision": 0.9601593625498008,
+      "recall": 0.6017478152309613,
+      "fpr": 0.02188183807439825,
+      "accuracy": 0.8023323615160349,
+      "average_precision": 0.8796926342612175
+    },
+    "rules": {
+      "support": 1715,
+      "tp": 145,
+      "fp": 0,
+      "tn": 914,
+      "fn": 656,
+      "precision": 1.0,
+      "recall": 0.18102372034956304,
+      "fpr": 0.0,
+      "accuracy": 0.6174927113702624,
+      "average_precision": 0.5635310089793006
+    },
+    "hybrid": {
+      "support": 1715,
+      "tp": 483,
+      "fp": 20,
+      "tn": 894,
+      "fn": 318,
+      "precision": 0.9602385685884692,
+      "recall": 0.602996254681648,
+      "fpr": 0.02188183807439825,
+      "accuracy": 0.8029154518950438,
+      "average_precision": 0.764443000984495
+    },
+    "blocking": {
+      "support": 1715,
+      "tp": 414,
+      "fp": 1,
+      "tn": 913,
+      "fn": 387,
+      "precision": 0.9975903614457832,
+      "recall": 0.5168539325842697,
+      "fpr": 0.0010940919037199124,
+      "accuracy": 0.7737609329446065,
+      "average_precision": 0.8796926342612175
+    },
+    "validation": {
+      "support": 1746,
+      "tp": 466,
+      "fp": 27,
+      "tn": 883,
+      "fn": 370,
+      "precision": 0.9452332657200812,
+      "recall": 0.5574162679425837,
+      "fpr": 0.02967032967032967,
+      "accuracy": 0.7726231386025201,
+      "average_precision": 0.8597169451214901
+    },
+    "alert_threshold": 0.6106409840570932,
+    "block_threshold": 0.8846313891952209,
+    "model_only_true_positives": 338,
+    "model_only_false_positives": 20,
+    "feedback": {
+      "reviewed_available": 0,
+      "admitted": 0,
+      "conflicting_groups": 0,
+      "train": 0,
+      "reserved_holdout": 0
+    },
+    "feature_importance": [
+      [
+        "quote_count",
+        0.24791040596792596
+      ],
+      [
+        "double_encoded",
+        0.1520347736745877
+      ],
+      [
+        "special_ratio",
+        0.10096727634467376
+      ],
+      [
+        "percent_count",
+        0.0974134384591985
+      ],
+      [
+        "entropy",
+        0.09241090146548338
+      ],
+      [
+        "method_other",
+        0.056624377284843506
+      ],
+      [
+        "non_ascii_count",
+        0.04843796235306076
+      ],
+      [
+        "space_ratio",
+        0.04598455577848634
+      ],
+      [
+        "mean_value_length",
+        0.0412985144662847
+      ],
+      [
+        "alpha_ratio",
+        0.03377016145734116
+      ],
+      [
+        "digit_ratio",
+        0.029023763094455007
+      ],
+      [
+        "max_value_length",
+        0.024787381161445615
+      ]
+    ],
+    "limitations": [
+      "2010 generated lab benchmark, not bank traffic; positive means anomalous.",
+      "No claim of universal attack coverage or calibrated breach probability.",
+      "Repeated benchmark is regression evidence. Validate on new real deployments separately."
+    ],
+    "eligible": true,
+    "auto_block_eligible": true
+  },
+  "dataset": {
+    "created_at": "2026-10-11T07:39:40.977Z",
+    "source_manifest": {
+      "dataset": "CSIC HTTP 2010",
+      "source_kind": "public_lab_capture",
+      "files": [
+        {
+          "name": "normalTrafficTraining.txt",
+          "sha256": "d51de812d9201ef2b173b6ae3e3e740c309047ac85545c06c51d6fb1ddbc1e63",
+          "bytes": 20148988,
+          "url": "https://raw.githubusercontent.com/msudol/Web-Application-Attack-Datasets/424c6e1c1951570473d9d6c0227eaaac6fdd6d02/OriginalDataSets/csic_2010/normalTrafficTraining.txt"
+        },
+        {
+          "name": "normalTrafficTest.txt",
+          "sha256": "f05dfc312d5d14fd1ed8371de27a9e4deab3dc09265f5d7f9df2643df8385089",
+          "bytes": 20151204,
+          "url": "https://raw.githubusercontent.com/msudol/Web-Application-Attack-Datasets/424c6e1c1951570473d9d6c0227eaaac6fdd6d02/OriginalDataSets/csic_2010/normalTrafficTest.txt"
+        },
+        {
+          "name": "anomalousTrafficTest.txt",
+          "sha256": "12fa4f0d496ceb859bb2652abf7f0f0ed8c59e1d9ce501b8a9a0ef38a625c046",
+          "bytes": 15734523,
+          "url": "https://raw.githubusercontent.com/msudol/Web-Application-Attack-Datasets/424c6e1c1951570473d9d6c0227eaaac6fdd6d02/OriginalDataSets/csic_2010/anomalousTrafficTest.txt"
+        }
+      ],
+      "revision": "424c6e1c1951570473d9d6c0227eaaac6fdd6d02",
+      "authors": [
+        "Carmen Torrano Gimenez",
+        "Alejandro Perez Villegas",
+        "Gonzalo Alvarez Maranon"
+      ],
+      "documentation": "https://web.archive.org/web/20130924222653/http://iec.csic.es/dataset",
+      "mirror": "https://github.com/msudol/Web-Application-Attack-Datasets",
+      "label_semantics": "normal vs anomalous; includes unintentional invalid requests",
+      "license_note": "Public research dataset; attribution retained; raw dataset is not redistributed."
+    },
+    "quality": {
+      "raw_requests": 97065,
+      "duplicate_feature_vectors": 85732,
+      "conflicting_feature_groups_removed": 82
+    },
+    "rows": 11251,
+    "positives": 5304,
+    "feature_schema": "soc-http-v2",
+    "dataset_sha256": "00e4e95647e2321df0814843d4a0855b8c239f04dd9bfb2b396b036ac5e999dd",
+    "protocol": "supervised_repartition/sha256_feature_groups/70-15-15",
+    "raw_data_stored_in_features": false,
+    "split_counts": {
+      "validation": 1746,
+      "train": 7790,
+      "test": 1715
+    },
+    "limitations": [
+      "Automatically generated HTTP requests from a 2010 e-commerce lab; not bank production logs.",
+      "Anomalous includes unintentional invalid requests, not just malicious activity.",
+      "Same benchmark reused for future regressions; not fresh independent evidence.",
+      "Feature grouping removes identical-vector leakage; does not prove unseen attack-family generalisation."
+    ]
+  }
+}

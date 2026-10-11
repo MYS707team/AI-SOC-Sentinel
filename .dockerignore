@@ -1,0 +1,9 @@
+*
+!requirements.txt
+!requirements.lock.txt
+!app/
+!app/*.py
+!web/
+!web/*.html
+!web/*.css
+!web/*.js
