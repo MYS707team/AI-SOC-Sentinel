@@ -7,7 +7,9 @@ no OS commands, real credentials, bank connections or external egress exist.
 from datetime import datetime, timedelta, timezone
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import hmac
+import gzip
 import json
+from pathlib import Path
 import secrets
 import sqlite3
 import threading
@@ -38,6 +40,22 @@ class LabService:
             raise HTTPException(403, "LAB_DISABLED_IN_PILOT")
 
     def _bootstrap(self):
+        # Ship the trained, non-executable artifact and public numeric features.
+        # Never overwrite an operator's existing training corpus or model.
+        assets = Path(__file__).resolve().parents[1] / "assets"
+        target = self.settings.data_dir / "http"
+        target.mkdir(parents=True, exist_ok=True)
+        for source, dest in (("http-model.json", "bootstrap-model.json"),
+                             ("public.manifest.json", "public.manifest.json"),
+                             ("public.jsonl.gz", "public.jsonl")):
+            src, dst = assets / source, target / dest
+            if src.exists() and not dst.exists():
+                data = gzip.decompress(src.read_bytes()) if source.endswith(".gz") else src.read_bytes()
+                try:
+                    with dst.open("xb") as stream:
+                        stream.write(data)
+                except FileExistsError:
+                    pass
         with self.store.transaction() as conn:
             if not self.store.get("settings", "http_lab", conn):
                 self.store.put("settings", {"id": "http_lab", "auto_block": True, "version": 1}, conn)
@@ -525,6 +543,7 @@ class LabService:
             events = self.store.all("http_events", conn)
             labels = [l for l in self.store.all("labels", conn) if l.get("detector") == "http"]
             return {"enabled": True, "running": self.server is not None, "scope": "loopback_lab_only",
+                "storage": "ephemeral" if self.settings.hosted_demo else "persistent_local",
                 "model_ready": self.model is not None, "model_version": self.model["version"] if self.model else None,
                 "events_total": len(events), "blocked": sum(e["blocked"] for e in events),
                 "escalated": sum(e["alert"] and not e["blocked"] for e in events),

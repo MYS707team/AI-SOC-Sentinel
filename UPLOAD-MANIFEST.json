@@ -1,13 +1,33 @@
 [
   {
     "path": ".dockerignore",
-    "bytes": 98,
-    "sha256": "068bf2720a9e111583e9f042aca48dfcf55d7f827972a05c21637e9ac68b70bc"
+    "bytes": 135,
+    "sha256": "095310d62bce2ee5482c2b61b4cb25f47159d79c04ce46c4e058ba316b30cdc0"
   },
   {
     "path": ".gitignore",
     "bytes": 117,
     "sha256": "d6262acc301ad3256d9c40077f549e22711740cca2eeb7d284ab8c8b124d203a"
+  },
+  {
+    "path": ".vercelignore",
+    "bytes": 106,
+    "sha256": "f6f36b1e8cfbcfb2d904e0d5350a1a8a72eece18e25a6d6d17cb1a4ef97cccc0"
+  },
+  {
+    "path": "Dockerfile",
+    "bytes": 679,
+    "sha256": "a7d8fa8623cc9f139b67b529f6c27e266574e857909ecf778613ff8fe9b1c6e4"
+  },
+  {
+    "path": "README.md",
+    "bytes": 1817,
+    "sha256": "f777bd918a9f8b016fe36203963c0e07f1f2def7f6bb8be04a73b9a96351ab75"
+  },
+  {
+    "path": "api/index.py",
+    "bytes": 506,
+    "sha256": "1e87b8a29a92cd306b90e92e73da191f8e5a31453e90039ded2040fb3b640157"
   },
   {
     "path": "app/__init__.py",
@@ -21,8 +41,8 @@
   },
   {
     "path": "app/config.py",
-    "bytes": 1333,
-    "sha256": "601d27d535a1ed1c10e04251e4e4682303f9ac7b87a28962875e5dd2dd095c45"
+    "bytes": 1609,
+    "sha256": "77265abc0626fb50a2d5b177dcfc16af8c5b924c0f32fed0baaff175b4c7b349"
   },
   {
     "path": "app/detection.py",
@@ -41,8 +61,8 @@
   },
   {
     "path": "app/lab.py",
-    "bytes": 35058,
-    "sha256": "8181f6e02441b21fb7c99d62a575866e1365b1d61eb95b157daf5367b63da86a"
+    "bytes": 36116,
+    "sha256": "facb69e95aab6a6679492476624a0d8af3acf2d749d2bd971b538958c49ecce2"
   },
   {
     "path": "app/learning.py",
@@ -51,8 +71,8 @@
   },
   {
     "path": "app/main.py",
-    "bytes": 26837,
-    "sha256": "d738985dfcd92392ba95f643aa987001036700b29c716329ebc511351f78222b"
+    "bytes": 27113,
+    "sha256": "49eb9a5ab71d41b6060d7e31606fd28820d36964f6d67819c3376e5649033e87"
   },
   {
     "path": "app/schemas.py",
@@ -61,8 +81,8 @@
   },
   {
     "path": "app/security.py",
-    "bytes": 5255,
-    "sha256": "edaa381dc469333b6b6af7ba0adaa609fbea6e2dc125f91a9bd4c52ec3204336"
+    "bytes": 5313,
+    "sha256": "c9e7024ed2b97ed55992b8f311d9b6d1f8cd0934acb833cb1de8ef97e5c4b724"
   },
   {
     "path": "app/service.py",
@@ -85,19 +105,19 @@
     "sha256": "ad2c46e35ad1a3cc0b366f9a751caea8f5bc410a470d1f1ce28211aa003f1697"
   },
   {
-    "path": "Dockerfile",
-    "bytes": 642,
-    "sha256": "aa863b93f0f28d06c503c34df8d020a2f45ae3fb63745009b938cc602eae3d8a"
+    "path": "assets/public.jsonl.gz",
+    "bytes": 1463509,
+    "sha256": "52c26df1ce9dae16c91683a3b81115de7cc31cfa66e30f8e94857cfb896e3bfc"
+  },
+  {
+    "path": "assets/public.manifest.json",
+    "bytes": 2728,
+    "sha256": "303a59c6bc0a677a830d16d8ec55160a395298b6bae110562c125206e31b3a8c"
   },
   {
     "path": "docs/LIVE_LAB_UZ.md",
     "bytes": 5723,
     "sha256": "fc688a8aeff6b9fadfdc34f2b60dfdce71a13c73041cd69058aa1c9fda6c6bbb"
-  },
-  {
-    "path": "README.md",
-    "bytes": 1335,
-    "sha256": "cb17872f99e9658b830eb149f66b3ddcbcb79ae245a3840d98f8b4c8ced9ed09"
   },
   {
     "path": "requirements.lock.txt",
@@ -190,9 +210,14 @@
     "sha256": "1faaa06bbc1e2b3350eecef5797db64617d3bee525e588303f0093cc8a366088"
   },
   {
+    "path": "tests/test_hosted.py",
+    "bytes": 1553,
+    "sha256": "747b6ec1a0853710846f5638c4ebf72a1d46bfb6b798d2327e543525020f40e8"
+  },
+  {
     "path": "tests/test_http_lab.py",
-    "bytes": 11221,
-    "sha256": "d6b69fa0100400e0fa5f1a46d40ddb383e40461e9bbb71f4d4265686a7e8efe7"
+    "bytes": 11313,
+    "sha256": "2e7cddea2e29eca1e17c9714db9c98d4f69ccbf3fb48dce98bf25ddf86a369e1"
   },
   {
     "path": "tests/test_identity_key.py",
@@ -220,9 +245,14 @@
     "sha256": "aa772f12a9ef030a6a22490558d7d96fac29decd63c38423e19cfe3b12de3da3"
   },
   {
+    "path": "vercel.json",
+    "bytes": 200,
+    "sha256": "5e4d1113522bf34218f22049f072d79b6489c6b85cbe987ce6a4284dea784612"
+  },
+  {
     "path": "web/app.js",
-    "bytes": 79414,
-    "sha256": "4f6fd8f1fb983dfc1c3da89fc466cea5f8ec0957bc2be3440d9b746b55a24b87"
+    "bytes": 80270,
+    "sha256": "81416cf6f5b774585360f8119618a386c53ac7c008eb0c63633fb1cf8eafcf76"
   },
   {
     "path": "web/i18n.js",

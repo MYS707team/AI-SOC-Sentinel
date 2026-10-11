@@ -7,3 +7,6 @@
 !web/*.html
 !web/*.css
 !web/*.js
+!assets/
+!assets/*.json
+!assets/*.gz

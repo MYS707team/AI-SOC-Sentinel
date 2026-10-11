@@ -12,6 +12,7 @@ class Settings:
     origin: str = field(default_factory=lambda: os.environ.get("SOC_ORIGIN", "http://127.0.0.1:8765"))
     ingest_token: str = field(default_factory=lambda: os.environ.get("SOC_INGEST_TOKEN", ""))
     users_file: str = field(default_factory=lambda: os.environ.get("SOC_USERS_FILE", ""))
+    hosted_demo: bool = field(default_factory=lambda: os.environ.get("SOC_HOSTED_DEMO") == "1")
     testing: bool = False
     auto_seed: bool = True
     session_hours: int = 4
@@ -20,6 +21,8 @@ class Settings:
     def validate(self):
         if self.mode not in {"demo", "pilot"}:
             raise ValueError("SOC_MODE must be demo or pilot; live response is unavailable")
+        if self.hosted_demo and (self.mode != "demo" or not self.origin.startswith("https://")):
+            raise ValueError("Hosted demo requires demo mode and an HTTPS origin")
         if self.mode == "pilot":
             if not self.origin.startswith("https://"):
                 raise ValueError("Pilot requires an explicit HTTPS SOC_ORIGIN behind a TLS reverse proxy")

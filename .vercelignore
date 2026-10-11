@@ -1,0 +1,14 @@
+.git
+.runtime
+.publish
+.venv
+__pycache__
+*.pyc
+.pytest_cache
+tests
+research
+docs
+scripts
+*.db
+*.key
+.env*

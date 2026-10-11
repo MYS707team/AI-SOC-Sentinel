@@ -82,7 +82,7 @@ class Security:
             conn.execute("DELETE FROM sessions WHERE token_hash=? OR expires_at<?", (hashlib.sha256(old.encode()).hexdigest(), utcnow()))
             conn.execute("INSERT INTO sessions VALUES(?,?,?,?,?)", (hashlib.sha256(token.encode()).hexdigest(), username, role, csrf, expires))
             self.store.audit(username, "session.started", username, {"role": role, "mode": self.settings.mode}, conn)
-        response.set_cookie("soc_session", token, httponly=True, secure=self.settings.mode != "demo", samesite="strict", max_age=self.settings.session_hours * 3600, path="/")
+        response.set_cookie("soc_session", token, httponly=True, secure=self.settings.mode != "demo" or self.settings.hosted_demo, samesite="strict", max_age=self.settings.session_hours * 3600, path="/")
         return {"user": {"username": username, "role": role}, "csrf_token": csrf, "mode": self.settings.mode}
 
     def authenticate(self, request: Request):
@@ -103,5 +103,5 @@ class Security:
 
     def assert_demo(self, request):
         local = request.client and request.client.host in {"127.0.0.1", "::1", "localhost"}
-        if self.settings.mode != "demo" or not (local or self.settings.testing):
+        if self.settings.mode != "demo" or not (local or self.settings.testing or self.settings.hosted_demo):
             raise HTTPException(403, "DEMO_LOOPBACK_ONLY")

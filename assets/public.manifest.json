@@ -1,0 +1,59 @@
+{
+  "created_at": "2026-10-11T07:39:40.977Z",
+  "source_manifest": {
+    "dataset": "CSIC HTTP 2010",
+    "source_kind": "public_lab_capture",
+    "files": [
+      {
+        "name": "normalTrafficTraining.txt",
+        "sha256": "d51de812d9201ef2b173b6ae3e3e740c309047ac85545c06c51d6fb1ddbc1e63",
+        "bytes": 20148988,
+        "url": "https://raw.githubusercontent.com/msudol/Web-Application-Attack-Datasets/424c6e1c1951570473d9d6c0227eaaac6fdd6d02/OriginalDataSets/csic_2010/normalTrafficTraining.txt"
+      },
+      {
+        "name": "normalTrafficTest.txt",
+        "sha256": "f05dfc312d5d14fd1ed8371de27a9e4deab3dc09265f5d7f9df2643df8385089",
+        "bytes": 20151204,
+        "url": "https://raw.githubusercontent.com/msudol/Web-Application-Attack-Datasets/424c6e1c1951570473d9d6c0227eaaac6fdd6d02/OriginalDataSets/csic_2010/normalTrafficTest.txt"
+      },
+      {
+        "name": "anomalousTrafficTest.txt",
+        "sha256": "12fa4f0d496ceb859bb2652abf7f0f0ed8c59e1d9ce501b8a9a0ef38a625c046",
+        "bytes": 15734523,
+        "url": "https://raw.githubusercontent.com/msudol/Web-Application-Attack-Datasets/424c6e1c1951570473d9d6c0227eaaac6fdd6d02/OriginalDataSets/csic_2010/anomalousTrafficTest.txt"
+      }
+    ],
+    "revision": "424c6e1c1951570473d9d6c0227eaaac6fdd6d02",
+    "authors": [
+      "Carmen Torrano Gimenez",
+      "Alejandro Perez Villegas",
+      "Gonzalo Alvarez Maranon"
+    ],
+    "documentation": "https://web.archive.org/web/20130924222653/http://iec.csic.es/dataset",
+    "mirror": "https://github.com/msudol/Web-Application-Attack-Datasets",
+    "label_semantics": "normal vs anomalous; includes unintentional invalid requests",
+    "license_note": "Public research dataset; attribution retained; raw dataset is not redistributed."
+  },
+  "quality": {
+    "raw_requests": 97065,
+    "duplicate_feature_vectors": 85732,
+    "conflicting_feature_groups_removed": 82
+  },
+  "rows": 11251,
+  "positives": 5304,
+  "feature_schema": "soc-http-v2",
+  "dataset_sha256": "00e4e95647e2321df0814843d4a0855b8c239f04dd9bfb2b396b036ac5e999dd",
+  "protocol": "supervised_repartition/sha256_feature_groups/70-15-15",
+  "raw_data_stored_in_features": false,
+  "split_counts": {
+    "validation": 1746,
+    "train": 7790,
+    "test": 1715
+  },
+  "limitations": [
+    "Automatically generated HTTP requests from a 2010 e-commerce lab; not bank production logs.",
+    "Anomalous includes unintentional invalid requests, not just malicious activity.",
+    "Same benchmark reused for future regressions; not fresh independent evidence.",
+    "Feature grouping removes identical-vector leakage; does not prove unseen attack-family generalisation."
+  ]
+}

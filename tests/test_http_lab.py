@@ -21,9 +21,11 @@ from tests.test_api import login
 def lab_system(tmp_path):
     bundle = ROOT / ".runtime" / "http" / "bootstrap-model.json"
     if not bundle.exists():
+        bundle = ROOT / "assets" / "http-model.json"
+    if not bundle.exists():
         pytest.skip("Run scripts/train_http.py --download to enable trained-model integration tests")
     (tmp_path / "http").mkdir()
-    shutil.copy2(bundle, tmp_path / "http" / bundle.name)
+    shutil.copy2(bundle, tmp_path / "http" / "bootstrap-model.json")
     app = create_app(Settings(data_dir=tmp_path, testing=True, auto_seed=False))
     with TestClient(app) as client:
         login(client, "admin")

@@ -3,6 +3,7 @@ from datetime import datetime, timedelta, timezone
 import hashlib
 import hmac
 import logging
+import os
 from pathlib import Path
 from urllib.parse import urlparse
 from fastapi import FastAPI, Request, Response, HTTPException
@@ -45,6 +46,9 @@ def create_app(settings=None):
     app.state.store, app.state.security, app.state.soc, app.state.settings = store, security, soc, settings
     app.state.lab = lab
     hosts = ["127.0.0.1", "localhost", "[::1]", urlparse(settings.origin).hostname]
+    if settings.hosted_demo:
+        hosts.extend(os.environ.get(name, "") for name in
+                     ("VERCEL_URL", "VERCEL_BRANCH_URL", "VERCEL_PROJECT_PRODUCTION_URL"))
     if settings.testing:
         hosts.append("testserver")
     app.add_middleware(TrustedHostMiddleware, allowed_hosts=list(set(filter(None, hosts))))
@@ -105,7 +109,8 @@ def create_app(settings=None):
     def health():
         with store.connect() as conn:
             conn.execute("SELECT 1").fetchone()
-        return {"status": "ok", "mode": settings.mode, "version": "1.0.0", "live_execution": False}
+        return {"status": "ok", "mode": settings.mode, "version": "1.0.0", "live_execution": False,
+                "storage": "ephemeral" if settings.hosted_demo else "persistent_local"}
 
     @app.get("/api/auth/me")
     def me(request: Request):
